@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/answer.css') }}">
+</head>
+<body>
+    <div class="crop-info">
+        <h2>Top 2 Crops</h2>
+        <p>Top 2 Crops: {{ top_two_crops[0] }}, {{ top_two_crops[1] }}</p>
+        <p>Predicted Hybrid Crop: {{ hybrid_prediction }} [Dominant]</p>
+        <div class="traits">
+            <h3>Traits:</h3>
+            {{ hybrid_crop_df|safe }}
+            {{ selected_planet }}
+        </div>
+    </div>
+</body>
+</html>
