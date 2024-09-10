@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Space Seeds</title>
+      <script defer src="/static/script.js"></script>
+
+      <link rel="icon" href="/static/images/logo-white.png">
+
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/font.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
+          href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Alumni+Sans+Pinstripe:ital@0;1&family=Amatic+SC:wght@400;700&family=Lovers+Quarrel&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div id="cursor1" class="w-[5px] h-[5px] absolute bg-white opacity-70 rounded-full duration-200 ease-out pointer-events-none z-[1000000000]"></div>
+    <div id="cursor2" class="w-[6rem] h-[6rem] absolute bg-transparent border-2 border-solid border-white opacity-70 rounded-full duration-[0.6s] ease-out pointer-events-none z-[1000000000] animate-cursorAnimation"></div>
+
+    <header class="w-[100vw] h-[15vh] flex justify-between box-border fixed top-0 bg-black text-white px-0 lg:px-5 z-50">
+        <div class="w-[20%] lg:w-[60%] h-full text-center flex items-start lg:items-center justify-start">
+            <a class="cursor-pointer alumni-sans-pinstripe-regular text-6xl lg:text-6xl uppercase tracking-[-0.06em] opacity-80 ml-5" href="/">Space Seeds</a>
+        </div>
+        <div class="w-[70vw] lg:w-[40%] h-[100vh] lg:h-[100%] flex flex-col justify-start lg:justify-around items-end lg:items-center raleway uppercase tracking-widest text-base lg:mx-0 transition-colors duration-500">
+            <div class="py-6 flex lg:hidden mr-5 z-50">
+                <label class="burger" for="mobileMenu">
+                    <input type="checkbox" id="mobileMenu">
+                    <span class="transition-colors duration-500 ease-in"></span>
+                    <span class="transition-colors duration-500 ease-in"></span>
+                    <span class="transition-colors duration-500 ease-in"></span>
+                </label>
+            </div>
+
+            <div id="menu" class="w-[70vw] lg:w-[40%] h-[100vh] lg:h-full pl-16 absolute bg-white lg:bg-black text-black lg:text-gray-400 flex flex-col lg:flex-row justify-start lg:justify-evenly items-end lg:items-center raleway uppercase tracking-widest text-base mr-[-30rem] lg:mr-0 transition-[margin] ease-linear duration-500">
+                <a class="nav_link active" href="#home">Home</a>
+                <a class="nav_link" href="#s1">Seed Advisor</a>
+                <a class="nav_link" href="#s2">About Us</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-full h-full bg-black text-white">
+        <section id="home" class="section relative w-full h-[100vh] flex justify-center items-center">
+            <div class="h-full w-full flex justify-center items-end overflow-hidden bg-black maskimage">
+                <img class="w-auto h-[80%] scale-105 opacity-60" src="/static/images/bg.png">
+            </div>
+
+            <div class="absolute w-full h-auto flex justify-center items-center alumni-sans-pinstripe-regular mt-[-200px]">
+                <div class="w-auto h-auto text-[6.5rem] tracking-[0.03em] leading-[1] text-center amatic-sc-regular">
+                    " Discovering the future <br> of gernomics "</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="s1" class="raleway section w-full h-auto flex flex-col justify-center items-center mt-12">
+          <div class="amatic-sc-regular text-white text-[4rem] mb-12">
+            Seed Advisor
+          </div>
+
+          <form id="seedAdvisor" name="seedAdvisor" action="/predict" method="POST" class="w-auto h-auto flex flex-col justify-center items-center">
+            <div class="w-auto h-auto flex space-x-16 mb-12">
+              <label class="bb8-toggle">
+                <input name="planet" class="bb8-toggle__checkbox" type="checkbox" id="bb8-checkbox" {% if selected_planet == 'Mars' %} checked {% endif %}>
+                <div class="bb8-toggle__container">
+                  <div class="bb8-toggle__scenery">
+                    <div class="bb8-toggle__star"></div>
+                    <div class="bb8-toggle__star"></div>
+                    <div class="bb8-toggle__star"></div>
+                    <div class="bb8-toggle__star"></div>
+                    <div class="bb8-toggle__star"></div>
+                    <div class="bb8-toggle__star"></div>
+                    <div class="bb8-toggle__star"></div>
+                    <div class="tatto-1"></div>
+                    <div class="tatto-2"></div>
+                    <div class="gomrassen"></div>
+                    <div class="hermes"></div>
+                    <div class="chenini"></div>
+                    <div class="bb8-toggle__cloud"></div>
+                    <div class="bb8-toggle__cloud"></div>
+                    <div class="bb8-toggle__cloud"></div>
+                  </div>
+                  <div class="bb8">
+                    <div class="bb8__head-container">
+                      <div class="bb8__antenna"></div>
+                      <div class="bb8__antenna"></div>
+                      <div class="bb8__head"></div>
+                    </div>
+                    <div class="bb8__body"></div>
+                  </div>
+                  <div class="artificial__hidden">
+                    <div class="bb8__shadow"></div>
+                  </div>
+                </div>
+              </label>
+
+              <div class="product-container product">
+                <div class="card">
+                    <div class="content">
+                      <div class="title">Nitrogen</div>
+                      <div class="bg-title">NIT</div>
+                      <div class="feature">
+                        <input required="" type="text" name="Nitrogen" placeholder="Nitrogen" size="22">
+                      </div>
+                    </div>
+                </div>
+              </div>
+  
+              <div class="product-container product">
+                <div class="card">
+                    <div class="content">
+                      <div class="title">Phosphorus</div>
+                      <div class="bg-title">PHS</div>
+                      <div class="feature">
+                        <input required="" type="text"  name="Phosphorus" placeholder="Phosphorus" size="22">
+                      </div>
+                    </div>
+                </div>
+              </div>
+  
+              <div class="product-container product">
+                <div class="card">
+                    <div class="content">
+                      <div class="title">Potassium</div>
+                      <div class="bg-title">PTS</div>
+                      <div class="feature">
+                        <input required="" type="text" name="Potassium" placeholder="Potassium" size="22">
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="w-auto h-auto flex space-x-16">
+              <div class="product-container product">
+                <div class="card">
+                    <div class="content">
+                      <div class="title">Temperature</div>
+                      <div class="bg-title">TMP</div>
+                      <div class="feature">
+                        <input required="" type="text" name="Temperature" placeholder="Temperature" size="22">
+                      </div>
+                    </div>
+                </div>
+              </div>
+  
+              <div class="product-container product">
+                <div class="card">
+                    <div class="content">
+                      <div class="title">Humidity</div>
+                      <div class="bg-title">HUM</div>
+                      <div class="feature">
+                        <input required="" type="text" name="Humidity" placeholder="Humidity" size="22">
+                      </div>
+                    </div>
+                </div>
+              </div>
+  
+              <div class="product-container product">
+                <div class="card">
+                    <div class="content">
+                      <div class="title">Soil PH</div>
+                      <div class="bg-title">SPH</div>
+                      <div class="feature">
+                        <input required="" type="text" name="Soil PH" placeholder="Soil PH" size="22">
+                      </div>
+                    </div>
+                </div>
+              </div>
+  
+              <div class="product-container product">
+                <div class="card">
+                    <div class="content">
+                      <div class="title">Rainfall</div>
+                      <div class="bg-title">RFL</div>
+                      <div class="feature">
+                        <input required="" type="text" name="Rainfall" placeholder="Rainfall" size="22">
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="w-full h-auto flex flex-col justify-center items-center space-y-10 mt-20">
+              <div class="cal-container">
+                <button type="submit" name="submit" form="seedAdvisor" value="Calculate">
+                  Calculate
+                  <div class="star-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xml:space="preserve"
+                      version="1.1"
+                      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                      viewBox="0 0 784.11 815.53"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <defs></defs>
+                      <g id="Layer_x0020_1">
+                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                        <path
+                          class="fil0"
+                          d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                        ></path>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="star-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xml:space="preserve"
+                      version="1.1"
+                      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                      viewBox="0 0 784.11 815.53"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <defs></defs>
+                      <g id="Layer_x0020_1">
+                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                        <path
+                          class="fil0"
+                          d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                        ></path>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="star-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xml:space="preserve"
+                      version="1.1"
+                      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                      viewBox="0 0 784.11 815.53"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <defs></defs>
+                      <g id="Layer_x0020_1">
+                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                        <path
+                          class="fil0"
+                          d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                        ></path>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="star-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xml:space="preserve"
+                      version="1.1"
+                      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                      viewBox="0 0 784.11 815.53"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <defs></defs>
+                      <g id="Layer_x0020_1">
+                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                        <path
+                          class="fil0"
+                          d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                        ></path>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="star-5">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xml:space="preserve"
+                      version="1.1"
+                      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                      viewBox="0 0 784.11 815.53"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <defs></defs>
+                      <g id="Layer_x0020_1">
+                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                        <path
+                          class="fil0"
+                          d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                        ></path>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="star-6">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xml:space="preserve"
+                      version="1.1"
+                      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                      viewBox="0 0 784.11 815.53"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <defs></defs>
+                      <g id="Layer_x0020_1">
+                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                        <path
+                          class="fil0"
+                          d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                        ></path>
+                      </g>
+                    </svg>
+                  </div>
+                </button>
+              </div>
+
+              <div class="w-auto h-auto flex flex-col justify-center items-center px-10">
+                {% if top_two_crops %}
+                <div class="bg-[#181818] w-auto h-auto rounded-lg text-2xl flex justify-center items-center text-center py-4 px-6 mb-6">
+                  Top 2 Crops: {{ top_two_crops[0] }}, {{ top_two_crops[1] }}<br>
+                  Predicted Hybrid Crop: {{ hybrid_prediction }} [Dominant] <br>
+                  Selected Planet: {{ selected_planet }}
+                </div>
+                <div class="bg-[#181818] w-auto h-auto rounded-lg text-2xl flex justify-center items-center text-center py-4 px-6 table-container">
+                  <table class="custom-table">
+                    {{ hybrid_crop_df|safe }}
+                  </table>
+                </div>
+              </div>  
+              {% else %}
+              <div class="bg-[#181818] w-auto h-auto rounded-lg text-2xl flex justify-center items-center text-center py-4 px-6">
+                No predictions available yet. Please fill the form and submit.
+              </div>
+              {% endif %}
+            </div>
+          </form>
+        </section>
+
+        <section id="s2" class="section w-full h-auto pt-[10rem] pb-[7rem] flex flex-col justify-center items-center">
+          <div class="amatic-sc-regular text-white text-[4rem] mb-12">
+            About Us 
+          </div>
+          <div class="w-full h-auto flex justify-evenly items-center">
+            <div class="group relative w-[18rem] h-[18rem] flex flex-col justify-center items-center bg-black border-[0.2rem] border-solid border-[#fff] shadow-[0.5rem_0.5rem_0_#fff] -rotate-2 transition-all duration-300 ease-in-out overflow-hidden hover:rotate-0 hover:scale-[1.02] hover:shadow-[1.1rem_1.1rem_0_#fff">
+              <span class="relative text-6xl alumni-sans-pinstripe-regular mb-4 overflow-hidden after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-[90%] after:h-[1.3px] after:bg-white after:translate-x-[-100%] after:transition-transform after:duration-300 group-hover:[&::after]:translate-x-[5%]">Dhairy Joshi</span>
+              <span class="text-3xl alumni-sans-pinstripe-regular mb-14">Frontend Engineer</span>
+              <div class="w-full px-12 flex justify-evenly items-center">
+                <a href="https://github.com/DhairyJoshi" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[2.2rem] h-[2.2rem] fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19"><path d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z"></path></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/joshi-dhairy-545716236/" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Icons" stroke="none" stroke-width="1">
+                        <g transform="translate(-702.000000, -265.000000)">
+                            <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn"></path>
+                        </g>
+                    </g>
+                  </svg>
+                </a>
+                <a href="https://x.com/dhairy_joshi" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799"><path fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/_d_h_a_i_r_y_/" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1">
+                        <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                <path d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792" id="instagram-[#167]">
+                                </path>
+                            </g>
+                        </g>
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="group relative w-[18rem] h-[18rem] flex flex-col justify-center items-center bg-black border-[0.2rem] border-solid border-[#fff] shadow-[0.5rem_0.5rem_0_#fff] -rotate-2 transition-all duration-300 ease-in-out overflow-hidden hover:rotate-0 hover:scale-[1.02] hover:shadow-[1.1rem_1.1rem_0_#fff">
+              <span class="relative text-6xl alumni-sans-pinstripe-regular mb-4 overflow-hidden after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-[90%] after:h-[1.3px] after:bg-white after:translate-x-[-100%] after:transition-transform after:duration-300 group-hover:[&::after]:translate-x-[5%]">Dhruv Thakkar</span>
+              <span class="text-3xl alumni-sans-pinstripe-regular mb-14">Backend Engineer</span>
+              <div class="w-full px-12 flex justify-evenly items-center">
+                <a href="https://github.com/26dhruv" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[2.2rem] h-[2.2rem] fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19"><path d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z"></path></svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Icons" stroke="none" stroke-width="1">
+                        <g transform="translate(-702.000000, -265.000000)">
+                            <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn"></path>
+                        </g>
+                    </g>
+                  </svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799"><path fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/></svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1">
+                        <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                <path d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792" id="instagram-[#167]">
+                                </path>
+                            </g>
+                        </g>
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="group relative w-[18rem] h-[18rem] flex flex-col justify-center items-center bg-black border-[0.2rem] border-solid border-[#fff] shadow-[0.5rem_0.5rem_0_#fff] -rotate-2 transition-all duration-300 ease-in-out overflow-hidden hover:rotate-0 hover:scale-[1.02] hover:shadow-[1.1rem_1.1rem_0_#fff">
+              <span class="relative text-6xl alumni-sans-pinstripe-regular mb-4 overflow-hidden after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-[90%] after:h-[1.3px] after:bg-white after:translate-x-[-100%] after:transition-transform after:duration-300 group-hover:[&::after]:translate-x-[5%]">Maharshi Patel</span>
+              <span class="text-3xl alumni-sans-pinstripe-regular mb-14">Backend Engineer</span>
+              <div class="w-full px-12 flex justify-evenly items-center">
+                <a href="https://github.com/Nobodyyisme" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[2.2rem] h-[2.2rem] fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19"><path d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z"></path></svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Icons" stroke="none" stroke-width="1">
+                        <g transform="translate(-702.000000, -265.000000)">
+                            <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn"></path>
+                        </g>
+                    </g>
+                  </svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799"><path fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/></svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1">
+                        <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                <path d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792" id="instagram-[#167]">
+                                </path>
+                            </g>
+                        </g>
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="group relative w-[18rem] h-[18rem] flex flex-col justify-center items-center bg-black border-[0.2rem] border-solid border-[#fff] shadow-[0.5rem_0.5rem_0_#fff] -rotate-2 transition-all duration-300 ease-in-out overflow-hidden hover:rotate-0 hover:scale-[1.02] hover:shadow-[1.1rem_1.1rem_0_#fff">
+              <span class="relative text-6xl alumni-sans-pinstripe-regular mb-4 overflow-hidden after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-[90%] after:h-[1.3px] after:bg-white after:translate-x-[-100%] after:transition-transform after:duration-300 group-hover:[&::after]:translate-x-[5%]">Mann Darji</span>
+              <span class="text-3xl alumni-sans-pinstripe-regular mb-14">UI/UX Designer</span>
+              <div class="w-full px-12 flex justify-evenly items-center">
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[2.2rem] h-[2.2rem] fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19"><path d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z"></path></svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Icons" stroke="none" stroke-width="1">
+                        <g transform="translate(-702.000000, -265.000000)">
+                            <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn"></path>
+                        </g>
+                    </g>
+                  </svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799"><path fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/></svg>
+                </a>
+                <a href="" target="_blank" class="flex justify-center items-center w-[2.2rem] h-[2.2rem] shadow-[0px_0px_4px_#00000027] transition-all duration-300 hover:bg-white hover:shadow-[0px_0px_6px_3px_white] hover:rounded-full bg-black [&:hover>svg]:fill-black">
+                  <svg class="duration-300 w-[1.7rem] h-[1.7rem] fill-white" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1">
+                        <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                <path d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792" id="instagram-[#167]">
+                                </path>
+                            </g>
+                        </g>
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <footer id="footer" class="section text-gray-400 bg-black body-font">
+      <div class="bg-black">
+        <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+          <div class="w-auto h-full flex title-font font-medium items-center md:justify-start justify-center text-white">
+              <a class="cursor-pointer alumni-sans-pinstripe-regular text-6xl lg:text-6xl uppercase tracking-[-0.06em]" href="index.html">Space Seeds</a>
+          </div>
+          <p class="text-sm text-gray-400 sm:ml-6 sm:mt-0 mt-4">© 2024 HackIT —
+            <a href="/" class="text-gray-500 ml-1" rel="noopener noreferrer">@spaceseeds</a>
+          </p>
+          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a class="text-gray-400">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-400">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-400">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-400">
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
